@@ -58,7 +58,9 @@ trait MustVerifyMobile
         }
 
         // Send the SMS with the verification code
-        // $this->sendSMS($user->phone, $verificationCode);
+        if (config('vonage.send')) {
+            $this->sendSMS($user->phone, $verificationCode);
+        }
     }
 
 
