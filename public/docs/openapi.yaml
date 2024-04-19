@@ -89,9 +89,17 @@ paths:
                       name: Name
                       phone: '+998901234567'
                       email: test@mail.ru
-                      created_at: '18 hours ago'
+                      created_at: '8 hours ago'
                       is_active: Active
-                      last_active_at: '2024-04-19 05:56:22'
+                      last_active_at: null
+                    -
+                      id: 2
+                      name: admin
+                      phone: '+998979260757'
+                      email: example@mail.com
+                      created_at: '6 hours ago'
+                      is_active: Active
+                      last_active_at: null
                 properties:
                   data:
                     type: array
@@ -101,9 +109,17 @@ paths:
                         name: Name
                         phone: '+998901234567'
                         email: test@mail.ru
-                        created_at: '18 hours ago'
+                        created_at: '8 hours ago'
                         is_active: Active
-                        last_active_at: '2024-04-19 05:56:22'
+                        last_active_at: null
+                      -
+                        id: 2
+                        name: admin
+                        phone: '+998979260757'
+                        email: example@mail.com
+                        created_at: '6 hours ago'
+                        is_active: Active
+                        last_active_at: null
                     items:
                       type: object
                       properties:
@@ -121,13 +137,13 @@ paths:
                           example: test@mail.ru
                         created_at:
                           type: string
-                          example: '18 hours ago'
+                          example: '8 hours ago'
                         is_active:
                           type: string
                           example: Active
                         last_active_at:
                           type: string
-                          example: '2024-04-19 05:56:22'
+                          example: null
       tags:
         - Endpoints
       security: []
@@ -160,9 +176,9 @@ paths:
                   phone: '+998901234567'
                   email_verified_at: null
                   is_active: 1
-                  last_active_at: '2024-04-19 05:56:22'
-                  created_at: '2024-04-18T13:47:37.000000Z'
-                  updated_at: '2024-04-19T08:19:59.000000Z'
+                  last_active_at: null
+                  created_at: '2024-04-19T10:31:13.000000Z'
+                  updated_at: '2024-04-19T11:28:40.000000Z'
                 properties:
                   id:
                     type: integer
@@ -184,13 +200,13 @@ paths:
                     example: 1
                   last_active_at:
                     type: string
-                    example: '2024-04-19 05:56:22'
+                    example: null
                   created_at:
                     type: string
-                    example: '2024-04-18T13:47:37.000000Z'
+                    example: '2024-04-19T10:31:13.000000Z'
                   updated_at:
                     type: string
-                    example: '2024-04-19T08:19:59.000000Z'
+                    example: '2024-04-19T11:28:40.000000Z'
       tags:
         - Endpoints
       security: []
@@ -221,6 +237,239 @@ paths:
         required: true
         schema:
           type: integer
+  /api/brands:
+    get:
+      summary: ''
+      operationId: getApiBrands
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/brands/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the brand.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/branches:
+    get:
+      summary: ''
+      operationId: getApiBranches
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: doloremque
+                brand_id:
+                  type: number
+                  description: ''
+                  example: 16087.0
+                district_id:
+                  type: number
+                  description: ''
+                  example: 7405.040396
+                images:
+                  type: array
+                  description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+                  items:
+                    type: string
+                    format: binary
+              required:
+                - name
+                - brand_id
+                - district_id
+      security: []
+  '/api/branches/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiBranchesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the branch.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/distric-branches:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/get-currency:
+    get:
+      summary: ''
+      operationId: getApiGetCurrency
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
   /api/auth:
     get:
       summary: ''

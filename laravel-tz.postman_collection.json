@@ -1,0 +1,1202 @@
+{
+	"info": {
+		"_postman_id": "8311b43b-bc65-45da-bdab-ceae4d4606e4",
+		"name": "laravel-tz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30458002"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"admin\",\r\n    \"email\":\"example@mail.com\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}login",
+							"host": [
+								"{{base_url}}login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"admin\",\r\n    \"email\":\"example@mail.com\",\r\n    \"password\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Apr 2024 18:34:24 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "1|qpZ1PlS6u9hwU7L25VXUyJJa3oGRgthGOc7pue6Bb42b1a15"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"admin\",\r\n    \"email\":\"exampssle@mail.co\",\r\n    \"password\":\"password\",\r\n    \"c_password\" : \"password\",\r\n    \"phone\" : \"+99897926075s7s8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}register",
+							"host": [
+								"{{base_url}}register"
+							]
+						},
+						"description": "This endpoint allows users to register with the application by providing their name, email, password, confirmation password, and phone number in the request body.\n\n### Request Body\n\n- `name` (string, required): The name of the user.\n- `email` (string, required): The email address of the user.\n- `password` (string, required): The password for the user account.\n- `c_password` (string, required): The confirmation password for the user account.\n- `phone` (string, required): The phone number of the user.\n    \n\n### Response\n\nThe API returns a 422 status code with a JSON object in the response body. The response contains an `errors` object with details about the validation errors for the `email` and `phone` fields.\n\nExample:\n\n``` json\n{\n    \"errors\": {\n        \"email\": [\"\"],\n        \"phone\": [\"\"]\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"admin\",\r\n    \"email\":\"example@mail.com\",\r\n    \"password\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Apr 2024 18:34:24 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "1|qpZ1PlS6u9hwU7L25VXUyJJa3oGRgthGOc7pue6Bb42b1a15"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|e69OX0iSBRAOqOYK2W46Q12E6NPbu7lsUbA0invha1d8d2d9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}logout",
+							"host": [
+								"{{base_url}}logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"admin\",\r\n    \"email\":\"example@mail.com\",\r\n    \"password\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Apr 2024 18:34:24 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "1|qpZ1PlS6u9hwU7L25VXUyJJa3oGRgthGOc7pue6Bb42b1a15"
+						}
+					]
+				},
+				{
+					"name": "verifyMobile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"+998979260757\",\r\n    \"email\": \"example@mail.com\",\r\n    \"verification_code\": 782021\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/verifyMobile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"verifyMobile"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "login\n\nregister\n\nverifyMobile\n\nlogout\n\nauthenticated user should verify sms code in base_url/api/verifyMobile"
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Post data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"John\",\n    \"phone\" : \"+998901234567\",\n    \"email\" : \"testa@mail.ru\",\n    \"password\" : \"secret123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}users",
+							"host": [
+								"{{base_url}}users"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` response code with enterd data.\n\nerror code provide with error message in JSON"
+					},
+					"response": []
+				},
+				{
+					"name": "Update data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Name\",\n    \"email\": \"test@mail.ru\",\n    \"phone\": \"+998901234567\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}users/1",
+							"host": [
+								"{{base_url}}users"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, or `404 Not found` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}users/10",
+							"host": [
+								"{{base_url}}users"
+							],
+							"path": [
+								"10"
+							]
+						},
+						"description": "This HTTP DELETE request is used to delete a specific user with the ID. Upon successful execution, the server returns a status code of 204 with a Content-Type of text/xml. No content is returned in the response body."
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}users/1",
+							"host": [
+								"{{base_url}}users"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "## Get User Details\n\nThis endpoint retrieves the details of a specific user.\n\n### Request\n\n`GET /users/2`\n\n### Response\n\n- Status: 200\n- Content-Type: application/json\n    \n\n``` json\n{\n    \"id\": 2,\n    \"name\": \"admin\",\n    \"email\": \"example@mail.co\",\n    \"phone\": \"+9989792607578\",\n    \"email_verified_at\": null,\n    \"is_active\": 1,\n    \"last_active_at\": null,\n    \"created_at\": \"2024-04-18T14:31:49.000000Z\",\n    \"updated_at\": \"2024-04-18T14:31:49.000000Z\"\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}users",
+							"host": [
+								"{{base_url}}users"
+							]
+						},
+						"description": "## Get User Details\n\nThis endpoint retrieves the details of a all users\n\n### Request\n\n`GET /users`\n\n### Response\n\n- Status: 200\n- Content-Type: application/json\n    \n\n``` json\n{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"admin\",\n            \"phone\": \"+998979260757\",\n            \"email\": \"example@mail.com\",\n            \"created_at\": \"16 hours ago\",\n            \"is_active\": \"Active\",\n            \"last_active_at\": \"2024-04-19 05:56:22\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"admin\",\n            \"phone\": \"+9989792607578\",\n            \"email\": \"example@mail.co\",\n            \"created_at\": \"15 hours ago\",\n            \"is_active\": \"Active\",\n            \"last_active_at\": null\n        },\n        {\n            \"id\": 3,\n            \"name\": \"admin\",\n            \"phone\": \"+998979260757s8\",\n            \"email\": \"exampsle@mail.co\",\n            \"created_at\": \"15 hours ago\",\n            \"is_active\": \"Active\",\n            \"last_active_at\": null\n        },\n        {\n            \"id\": 4,\n            \"name\": \"admin\",\n            \"phone\": \"+99897926075s7s8\",\n            \"email\": \"exampssle@mail.co\",\n            \"created_at\": \"15 hours ago\",\n            \"is_active\": \"Active\",\n            \"last_active_at\": null\n        }\n    ]\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Brand",
+			"item": [
+				{
+					"name": "Get ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}brands",
+							"host": [
+								"{{base_url}}brands"
+							]
+						},
+						"description": "# Get Brands\n\nThis endpoint makes an HTTP GET request to retrieve a list of brands.\n\n### Response\n\nThe response will be in JSON format and will include an array of brand objects, each containing the following fields:\n\n- `id` (number): The unique identifier for the brand.\n- `name` (string): The name of the brand.\n- `image_path` (string): The path to the brand's image.\n- `created_at` (string): The timestamp of when the brand was created.\n    \n\nAdditionally, the response will include the following metadata:\n\n- `links` (object): Contains links to the first, last, previous, and next pages of results.\n- `meta` (object): Contains information about the current page, total number of results, and pagination details.\n    \n\nExample response:\n\n``` json\n{\n    \"data\": [\n        {\n            \"id\": 13,\n            \"name\": \"new brandss\",\n            \"image_path\": \"http://127.0.0.1:8000/storage/brand_images/Kw1OMFZ6lt72SywIWO9Y5Xz6IqtGLs0i3V0Pdff1.jpg\",\n            \"created_at\": \"6 minutes ago\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"ishonch\",\n            \"image_path\": null,\n            \"created_at\": \"27 minutes ago\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"texnomart\",\n            \"image_path\": null,\n            \"created_at\": \"27 minutes ago\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"mediapark\",\n            \"image_path\": null,\n            \"created_at\": \"27 minutes ago\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/brands?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/brands?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"« Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/brands?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next »\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/brands\",\n        \"per_page\": 10,\n        \"to\": 4,\n        \"total\": 4\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}brands/1",
+							"host": [
+								"{{base_url}}brands"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "This endpoint retrieves the details of a specific brand with the ID of 1. The response will contain the ID, name, image path, and creation timestamp of the brand.\n\nPlease note that the response will be in JSON format with a 200 status code.\n\n```\n{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"ishonch\",\n        \"image_path\": null,\n        \"created_at\": \"36 minutes ago\"\n    }\n}\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Post data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "new brand",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Pictures/download.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}brands",
+							"host": [
+								"{{base_url}}brands"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or\n\n`201 Created` response code.\n\n{    \"message\": \"Brand created\",    \"brand\": {        \"name\": \"new brandss\",        \"user_id\": 1,        \"image_path\": \"http://127.0.0.1:8000/storage/brand_images/Kw1OMFZ6lt72SywIWO9Y5Xz6IqtGLs0i3V0Pdff1.jpg\",        \"updated_at\": \"2024-04-19T10:52:24.000000Z\",        \"created_at\": \"2024-04-19T10:52:24.000000Z\",        \"id\": 13    }}EndFragment  \n  \n\n[http://127.0.0.1:8000/storage/brand_images/Kw1OMFZ6lt72SywIWO9Y5Xz6IqtGLs0i3V0Pdff1.jpgEndFragment](http://127.0.0.1:8000/storage/brand_images/Kw1OMFZ6lt72SywIWO9Y5Xz6IqtGLs0i3V0Pdff1.jpgEndFragment)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "ishonch",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Pictures/coffee.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}brands/1",
+							"host": [
+								"{{base_url}}brands"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}brands/13",
+							"host": [
+								"{{base_url}}brands"
+							],
+							"path": [
+								"13"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Branch",
+			"item": [
+				{
+					"name": "Get data All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}branches",
+							"host": [
+								"{{base_url}}branches"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Search by",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"district\": \"Amudaryo tumani\",\r\n    \"brand\" : \"ishonch\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}branches",
+							"host": [
+								"{{base_url}}branches"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.\n\nsearch by district or brand name(Head Brand)\n\n{   \n\n// \"district\": \"Amudaryo tumani\",   \n\n\"brand\" : \"texnomart\"\n\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get one",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}branches/45",
+							"host": [
+								"{{base_url}}branches"
+							],
+							"path": [
+								"45"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.\n\nsearch by district or brand name(Head Brand)\n\n{   \n\n// \"district\": \"Amudaryo tumani\",   \n\n\"brand\" : \"texnomart\"\n\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Post data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "ishonch branch",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "district_id",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": [
+										"/C:/Users/User/Pictures/coffee.png",
+										"/C:/Users/User/Pictures/download.jpg",
+										"/C:/Users/User/Pictures/reading.png"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}branches",
+							"host": [
+								"{{base_url}}branches"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}branches/4",
+							"host": [
+								"{{base_url}}branches"
+							],
+							"path": [
+								"4"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`\n\nresponce {    \"message\": \"branch deleted\"}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "ishonch branch",
+									"type": "text"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": [
+										"/C:/Users/User/Pictures/download.jpg",
+										"/C:/Users/User/Pictures/reading.png"
+									]
+								},
+								{
+									"key": "district_id",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}branches/1",
+							"host": [
+								"{{base_url}}branches"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code.\n\n> example responce \n  \n\n```\n{\n    \"success\": {\n        \"id\": 1,\n        \"name\": \"ishonch branch\",\n        \"brand_name\": \"ishonch\",\n        \"district_name\": \"Qo‘ng‘irot tumani\",\n        \"images\": [\n            {\n                \"url\": \"http://127.0.0.1:8000/storage/uploads/files/84478237bef4e02ad5333528b89b706e.jpg\"\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/storage/uploads/files/ede35e387e88d8e8b75f1b77c7f43390.png\"\n            }\n        ],\n        \"created_at\": \"2 hours ago\"\n    }\n}\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get branches by region",
+			"item": [
+				{
+					"name": "Get Branches",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"region\": \"andijon viloyati\"\r\n    // \"district\": \"Andijon shahri\"\r\n    // \"brand\" : \"mediapark\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}distric-branches",
+							"host": [
+								"{{base_url}}distric-branches"
+							]
+						},
+						"description": "one of them should be sended by client\n\neither regino with name\n\nor district with name or\n\nseach function with brand name"
+					},
+					"response": []
+				}
+			],
+			"description": "**Regionlar kesimida,  \nTumanlardagi har bir brandning branchlar sonini olish imkoniyati**"
+		},
+		{
+			"name": "CurrencyFetch",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|5ICRNf9WgyzqrhDAuqSU9EnovInx9ZwUwFHw0RiH0d5f1268",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}get-currency",
+							"host": [
+								"{{base_url}}get-currency"
+							]
+						},
+						"description": "This endpoint sends an HTTP GET request to retrieve currency information. The response will have a status code of 200 and a content type of application/json. The response body will include a message field with the currency information.\n\nresponce like this\n\n```\n{\n    \"message\": \"Countries and currencies saved successfully\",\n    \"data\": {\n        \"AED\": \"United Arab Emirates Dirham\",\n        \"AFN\": \"Afghan Afghani\",\n        \"ALL\": \"Albanian Lek\",\n        \"AMD\": \"Armenian Dram\",\n        \"ANG\": \"Netherlands Antillean Guilder\",\n        \"AOA\": \"Angolan Kwanza\",\n\n        \"XPD\": \"Palladium Ounce\",\n        \"XPF\": \"CFP Franc\",\n        \"XPT\": \"Platinum Ounce\",\n        \"YER\": \"Yemeni Rial\",\n        \"ZAR\": \"South African Rand\",\n        \"ZMW\": \"Zambian Kwacha\",\n        \"ZWL\": \"Zimbabwean Dollar\"\n    }\n}\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "[https://openexchangerates.org/api/currencies.json?prettyprint=false&amp;show_alternative=false&amp;show_inactive=false&amp;app_id=1](https://openexchangerates.org/api/currencies.json?prettyprint=false&show_alternative=false&show_inactive=false&app_id=1)\n\n  \nAPI ga integratsiya qilib, davlatlar va ularni valyutalarini currency table ga  \nyozish."
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api/"
+		}
+	]
+}

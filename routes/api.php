@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CurrencyFetchController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ Route::apiResource('/users', UserController::class);
 Route::apiResource('/brands', BrandController::class)->middleware('auth:sanctum');
 Route::apiResource('/branches', BranchController::class)->middleware('auth:sanctum');
 Route::get('/distric-branches', [DistrictController::class, 'search'])->middleware('auth:sanctum');
-
+Route::get('/get-currency', [CurrencyFetchController::class, 'index'])->middleware('auth:sanctum');
 // chek verified user route and active ones
 Route::get('/auth', function (): string {
     return 'You have been authenticated and your account active';
