@@ -3,6 +3,9 @@
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +34,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::post('/verifyMobile', [LoginController::class, 'verifyCode'])->name('verifyMobile')->middleware(['guest', 'check.login.attempts']);
 
 Route::apiResource('/users', UserController::class);
+Route::apiResource('/brands', BrandController::class)->middleware('auth:sanctum');
+Route::apiResource('/branches', BranchController::class)->middleware('auth:sanctum');
+Route::get('/distric-branches', [DistrictController::class, 'search'])->middleware('auth:sanctum');
 
 // chek verified user route and active ones
 Route::get('/auth', function (): string {

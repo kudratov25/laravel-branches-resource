@@ -58,4 +58,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(SMSVerify::class);
     }
+    public function brands(): HasMany
+    {
+        return $this->hasMany(Brand::class);
+    }
 }

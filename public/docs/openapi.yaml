@@ -1,0 +1,249 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/verifyMobile:
+    post:
+      summary: ''
+      operationId: postApiVerifyMobile
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/users:
+    get:
+      summary: ''
+      operationId: getApiUsers
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: Name
+                      phone: '+998901234567'
+                      email: test@mail.ru
+                      created_at: '18 hours ago'
+                      is_active: Active
+                      last_active_at: '2024-04-19 05:56:22'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Name
+                        phone: '+998901234567'
+                        email: test@mail.ru
+                        created_at: '18 hours ago'
+                        is_active: Active
+                        last_active_at: '2024-04-19 05:56:22'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Name
+                        phone:
+                          type: string
+                          example: '+998901234567'
+                        email:
+                          type: string
+                          example: test@mail.ru
+                        created_at:
+                          type: string
+                          example: '18 hours ago'
+                        is_active:
+                          type: string
+                          example: Active
+                        last_active_at:
+                          type: string
+                          example: '2024-04-19 05:56:22'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiUsers
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/users/{id}':
+    get:
+      summary: ''
+      operationId: getApiUsersId
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  name: Name
+                  email: test@mail.ru
+                  phone: '+998901234567'
+                  email_verified_at: null
+                  is_active: 1
+                  last_active_at: '2024-04-19 05:56:22'
+                  created_at: '2024-04-18T13:47:37.000000Z'
+                  updated_at: '2024-04-19T08:19:59.000000Z'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Name
+                  email:
+                    type: string
+                    example: test@mail.ru
+                  phone:
+                    type: string
+                    example: '+998901234567'
+                  email_verified_at:
+                    type: string
+                    example: null
+                  is_active:
+                    type: integer
+                    example: 1
+                  last_active_at:
+                    type: string
+                    example: '2024-04-19 05:56:22'
+                  created_at:
+                    type: string
+                    example: '2024-04-18T13:47:37.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2024-04-19T08:19:59.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiUsersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiUsersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/auth:
+    get:
+      summary: ''
+      operationId: getApiAuth
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
