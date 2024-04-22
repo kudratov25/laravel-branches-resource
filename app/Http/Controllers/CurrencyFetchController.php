@@ -11,19 +11,32 @@ class CurrencyFetchController extends Controller
 
     public function index()
     {
-        $response = Http::get('https://openexchangerates.org/api/currencies.json?prettyprint=false&show_alternative=false&show_inactive=false&app_id=1');
+        try {
+            $url = config('app.api_currency');
+            $response = Http::get($url);
 
-        // Decode JSON response
-        $data = $response->json();
+            // Check request
+            if ($response->successful()) {
+                // Decode JSON response
+                $data = $response->json();
 
-        // Iterate through the data and save to database
-        foreach ($data as $currencyCode => $currencyName) {
-            $country = new Country();
-            $country->name = $currencyName;
-            $country->currency = $currencyCode;
-            $country->save();
+                foreach ($data as $currencyCode => $currencyName) {
+                    // Check if the country with the same currency code already exists
+                    $existingCountry = Country::where('currency', $currencyCode)->first();
+                    if (!$existingCountry) {
+                        $country = new Country();
+                        $country->name = $currencyName;
+                        $country->currency = $currencyCode;
+                        $country->save();
+                    }
+                }
+
+                return response()->json(['message' => 'Countries and currencies saved successfully', "data" => $data], 200);
+            } else {
+                return response()->json(['message' => 'Failed to fetch data from API'], $response->status());
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'An error occurred: ' . $e->getMessage()], 500);
         }
-
-        return response()->json(['message' => 'Countries and currencies saved successfully', "data" => $data], 200);
     }
 }

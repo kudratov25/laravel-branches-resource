@@ -30,6 +30,9 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    // third API for fetching currency data
+    'api_currency' => env('API_CURRENCY', 'https://openexchangerates.org/api/currencies.json?prettyprint=false&show_alternative=false&show_inactive=false&app_id=1'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

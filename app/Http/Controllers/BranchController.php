@@ -49,25 +49,31 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'brand_id' => 'required|numeric',
-            'district_id' => 'required|numeric',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+        try {
 
-        $name = $request->name;
-        $brand_id = $request->brand_id;
-        $district_id = $request->district_id;
+            $request->validate([
+                'name' => 'required',
+                'brand_id' => 'required|numeric|exists:brands,id',
+                'district_id' => 'required|numeric|exists:districts,id',
+                'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
 
-        $branch = new Branch();
-        $branch->name = $name;
-        $branch->brand_id = $brand_id;
-        $branch->district_id = $district_id;
-        $branch->save();
+            $name = $request->name;
+            $brand_id = $request->brand_id;
+            $district_id = $request->district_id;
 
-        event(new AttachmentEvent($request->images, $branch->images()));
-        return response()->json(['success' => $branch], 200);
+            $branch = new Branch();
+            $branch->name = $name;
+            $branch->brand_id = $brand_id;
+            $branch->district_id = $district_id;
+            $branch->save();
+
+            event(new AttachmentEvent($request->images, $branch->images()));
+            return response()->json(['success' => new BranchResource($branch)], 200);
+        } catch (ValidationException $e) {
+            Log::error('Validation error while creating branch: ' . $e->getMessage());
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -85,8 +91,8 @@ class BranchController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
-                'brand_id' => 'required|numeric',
-                'district_id' => 'required|numeric',
+                'brand_id' => 'required|numeric|exists:brands,id',
+                'district_id' => 'required|numeric|exists:districts,id',
                 'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
@@ -104,7 +110,6 @@ class BranchController extends Controller
 
             return response()->json(['success' => new BranchResource($branch)], 200);
         } catch (ValidationException $e) {
-            // Log the error
             Log::error('Validation error while updating brand: ' . $e->getMessage());
             // Return validation error response
             return response()->json(['errors' => $e->errors()], 422);

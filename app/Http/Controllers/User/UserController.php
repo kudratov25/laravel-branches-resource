@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return UserResource::collection($users);
     }
 
@@ -53,7 +53,7 @@ class UserController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'email|max:255|unique:users,email,' . $id,
-                'phone' => ['string','max:255',Rule::unique('users')->ignore($id),'regex:/^[0-9\-\+\(\)\/\s]*$/'],
+                'phone' => ['string', 'max:255', Rule::unique('users')->ignore($id), 'regex:/^[0-9\-\+\(\)\/\s]*$/'],
                 'password' => 'string|min:8',
             ]);
             $validatedData['password'] = Hash::make($request->password);

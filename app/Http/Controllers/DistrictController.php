@@ -7,6 +7,7 @@ use App\Models\Branch;
 use App\Models\Brand;
 use App\Models\District;
 use App\Models\Region;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class DistrictController extends Controller
@@ -16,17 +17,34 @@ class DistrictController extends Controller
      */
     public function search(Request $request)
     {
+
         if ($request->region) {
-            $regionName = $request->region;
-            $branches = Brand::whereHas('branches.district.region', function ($query) use ($regionName) {
-                $query->where('name_uz', $regionName);
-            })->with(['branches' => function ($query) use ($regionName) {
-                $query->whereHas('district.region', function ($query) use ($regionName) {
-                    $query->where('name_uz', $regionName);
-                });
-            }])->withCount('branches')->get();
-            return response()->json(['brands' => $branches]);
-        } else if ($request->district) {
+            $request->validate([
+                'region' => 'required|string',
+            ]);
+            $regionName = $request->input('region');
+            $region = Region::where('name_uz', $regionName)->firstOrFail();
+            $branchCounts = [];
+            foreach ($region->district as $district) {
+                $branches = Branch::where('district_id', $district->id)->get();
+                $branchCountsInDistrict = [];
+                foreach ($branches as $branch) {
+                    $brandName = $branch->brand->name; // Assuming 'name' is the column for brand name
+                    if (!isset($branchCountsInDistrict[$brandName])) {
+                        $branchCountsInDistrict[$brandName] = 1;
+                    } else {
+                        $branchCountsInDistrict[$brandName]++;
+                    }
+                }
+                if (!empty($branchCountsInDistrict)) {
+                    $branchCounts[$district->name_uz] = $branchCountsInDistrict;
+                }
+            }
+
+            return response()->json(['branchs in ' . $regionName => $branchCounts]);
+        }
+
+        else if ($request->district) {
             $branches = BranchResource::collection(District::where('name_uz', $request->district)->firstOrFail()->branches()->latest()->paginate(10)->withQueryString());
             return response()->json(["$request->district" . "dagi barcha filiallar soni " => count($branches), "$request->district" . "dagi barcha filiallar" => $branches]);
         } else if ($request->brand) {
