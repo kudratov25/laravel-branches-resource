@@ -61,6 +61,9 @@ trait MustVerifyMobile
         if (config('vonage.send')) {
             $this->sendSMS($user->phone, $verificationCode);
         }
+        if (config('telegram.send')) {
+            $this->sendTelegram($user, $verificationCode);
+        }
     }
 
 
@@ -72,5 +75,16 @@ trait MustVerifyMobile
     protected function generateVerificationCode()
     {
         return str_pad(mt_rand(1, 999999), 6, STR_PAD_LEFT);
+    }
+    protected function sendTelegram($model, $verificationCode)
+    {
+        $name = $model->name;
+        $phone_number = $model->phone;
+        $message  = $verificationCode;
+        $time = Carbon::now();
+        $token = config('telegram.token');
+        $chat_id = config('telegram.chat_id');
+        $info = "%3C%62%3EUSER:%3C%2F%62%3E%20" . $name . ' ' . "%0D%0A" . '%3C%62%3EТелефон:%3C%2F%62%3E%20' . $phone_number . "%0D%0A" . '%3C%62%3EХабар:%3C%2F%62%3E%20' . $message  . '%0D%0A' . '%3C%62%3ETime:%3C%2F%62%3E%20' .  $time;
+        $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$info}", "r");
     }
 }
