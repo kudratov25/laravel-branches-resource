@@ -13,16 +13,17 @@ class BrandSeeder extends Seeder
     public function run(): void
     {
         $brand = Brand::create([
-            'name' => 'ishonch',
+            'name' => 'cts',
+            'domain' => 'https://ctsbackend.uz',
             'user_id' => 1,
+            'status' => 1,
         ]);
         $brand = Brand::create([
-            'name' => 'texnomart',
+            'name' => 'oilabuilding',
+            'domain' => 'https://oilabackend.uz',
             'user_id' => 1,
+            'status' => 1,
         ]);
-        $brand = Brand::create([
-            'name' => 'mediapark',
-            'user_id' => 1,
-        ]);
+
     }
 }

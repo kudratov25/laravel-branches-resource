@@ -13,20 +13,16 @@ class BranchSeeder extends Seeder
      */
     public function run(): void
     {
-        $brand = Branch::create([
+        $branch = Branch::create([
             'name' => 'ishonch filial',
             'brand_id' => 1,
             'district_id' => 15
         ]);
-        $brand = Branch::create([
+        $branch = Branch::create([
             'name' => 'texnomart filial',
             'brand_id' => 2,
             'district_id' => 25
         ]);
-        $brand = Branch::create([
-            'name' => 'mediapark filial',
-            'brand_id' => 3,
-            'district_id' => 30
-        ]);
+
     }
 }

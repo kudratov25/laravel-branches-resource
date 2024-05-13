@@ -14,7 +14,7 @@ class BrandController extends Controller
 
     public function index(Request $request)
     {
-        return BrandResource::collection(Brand::latest()->paginate(10));
+        return BrandResource::collection(Brand::latest()->paginate(15));
     }
 
     /**
@@ -26,10 +26,14 @@ class BrandController extends Controller
         try {
             $request->validate([
                 'name' => 'required|unique:brands',
+                'domain' => 'required|unique:brands',
+                'status' => 'boolean',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
             $name = $request->name;
+            $domain = $request->domain;
+            $status = $request->status;
             $user_id = $request->user()->id;
 
             if ($request->file('image')) {
@@ -42,6 +46,8 @@ class BrandController extends Controller
 
             $brand = new Brand();
             $brand->name = $name;
+            $brand->domain = $domain;
+            $brand->status = $status;
             $brand->user_id = $user_id;
             $brand->image_path = $imagePath; // Store the file path in the database
             $brand->save();
@@ -79,9 +85,13 @@ class BrandController extends Controller
         try {
             $request->validate([
                 'name' => 'required|unique:brands,name,' . $brand->id,
+                'domain' => 'required|unique:brands,domain,' . $brand->id,
+                'status' => 'boolean',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
             $brand->name = $request->name;
+            $brand->domain = $request->domain;
+            $brand->status = $request->status;
 
             if ($request->hasFile('image')) {
                 // Delete old image if exists
