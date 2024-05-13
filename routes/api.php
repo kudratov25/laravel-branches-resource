@@ -28,18 +28,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['guest', 'check.login.attempts']], function () {
     Route::post('/login', [LoginController::class, 'login'])->name('/login');
 });
-Route::post('/register', [RegisterController::class, 'register'])->name('/register');
+// Route::post('/register', [RegisterController::class, 'register'])->name('/register');
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 Route::post('/verifyMobile', [LoginController::class, 'verifyCode'])->name('verifyMobile')->middleware(['guest', 'check.login.attempts']);
 
-Route::apiResource('/users', UserController::class);
+// Route::apiResource('/users', UserController::class);
 Route::apiResource('/brands', BrandController::class)->middleware('auth:sanctum');
 Route::apiResource('/branches', BranchController::class)->middleware('auth:sanctum');
 Route::get('/distric-branches', [DistrictController::class, 'search'])->middleware('auth:sanctum');
-Route::get('/get-currency', [CurrencyFetchController::class, 'index'])->middleware('auth:sanctum');
-// chek verified user route and active ones
-Route::get('/auth', function (): string {
-    return 'You have been authenticated and your account active';
-})->middleware(['auth:sanctum', 'is_active']);
+
+Route::get('/brands', [BrandController::class, 'index']);

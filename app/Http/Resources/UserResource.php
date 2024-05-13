@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'phone' => $this->phone,
             'email' => $this->email,
             'created_at' => $this->created_at,
-            'is_active' => $this->is_active ? "Active" : "Deactive",
+            'is_active' => $this->is_active ? "Active" : "Deactive",    
             'last_active_at' => $this->last_active_at,
             'created_at' => $this->created_at->diffForHumans(),
         ];
