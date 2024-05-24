@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('inn');
             $table->string('domain');
             $table->boolean('status');
             $table->string('image_path')->nullable();

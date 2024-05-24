@@ -38,5 +38,4 @@ Route::post('/verifyMobile', [LoginController::class, 'verifyCode'])->name('veri
 Route::apiResource('/brands', BrandController::class)->middleware('auth:sanctum');
 Route::apiResource('/branches', BranchController::class)->middleware('auth:sanctum');
 Route::get('/distric-branches', [DistrictController::class, 'search'])->middleware('auth:sanctum');
-
-Route::get('/brands', [BrandController::class, 'index']);
+Route::post('/search-brand', [BrandController::class, 'searchInn']);

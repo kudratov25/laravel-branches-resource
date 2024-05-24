@@ -62,7 +62,7 @@ class LoginController extends Controller implements MustVerifyMobile
             $user = User::where('phone', $userPhone)->first();
             SMSVerify::where('user_id', $user->id)->delete();
             Auth::login($user);
-            $token = $user->createToken('LoginToken')->plainTextToken;
+            $token = $user->createToken($user->email)->plainTextToken;
             return response()->json([
                 'token' => $token,
                 'message' => 'Login successful'

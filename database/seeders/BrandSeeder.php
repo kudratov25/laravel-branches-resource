@@ -14,12 +14,14 @@ class BrandSeeder extends Seeder
     {
         $brand = Brand::create([
             'name' => 'cts',
+            'inn' => '123456789',
             'domain' => 'https://ctsbackend.uz',
             'user_id' => 1,
             'status' => 1,
         ]);
         $brand = Brand::create([
             'name' => 'oilabuilding',
+            'inn' => '112233445',
             'domain' => 'https://oilabackend.uz',
             'user_id' => 1,
             'status' => 1,

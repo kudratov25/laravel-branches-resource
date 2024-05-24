@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Log;
 class BrandController extends Controller
 {
 
+    public function searchInn(Request $request)
+    {
+        $brand = Brand::where('inn', $request->inn)->first();
+        return (new BrandResource($brand));
+    }
     public function index(Request $request)
     {
         return BrandResource::collection(Brand::latest()->paginate(15));
@@ -26,12 +31,14 @@ class BrandController extends Controller
         try {
             $request->validate([
                 'name' => 'required|unique:brands',
+                'inn' => 'required|unique:brands',
                 'domain' => 'required|unique:brands',
                 'status' => 'boolean',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
             $name = $request->name;
+            $inn = $request->inn;
             $domain = $request->domain;
             $status = $request->status;
             $user_id = $request->user()->id;
@@ -46,6 +53,7 @@ class BrandController extends Controller
 
             $brand = new Brand();
             $brand->name = $name;
+            $brand->inn = $inn;
             $brand->domain = $domain;
             $brand->status = $status;
             $brand->user_id = $user_id;
@@ -85,11 +93,13 @@ class BrandController extends Controller
         try {
             $request->validate([
                 'name' => 'required|unique:brands,name,' . $brand->id,
+                'inn' => 'required|unique:brands,inn,' . $brand->id,
                 'domain' => 'required|unique:brands,domain,' . $brand->id,
                 'status' => 'boolean',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
             $brand->name = $request->name;
+            $brand->inn = $request->inn;
             $brand->domain = $request->domain;
             $brand->status = $request->status;
 
