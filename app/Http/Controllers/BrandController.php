@@ -15,8 +15,16 @@ class BrandController extends Controller
     public function searchInn(Request $request)
     {
         $brand = Brand::where('inn', $request->inn)->first();
-        return (new BrandResource($brand));
+
+        if ($brand === null) {
+            return response()->json([
+                'error' => 'Brand not found'
+            ], 404);
+        }
+
+        return new BrandResource($brand);
     }
+
     public function index(Request $request)
     {
         return BrandResource::collection(Brand::latest()->paginate(15));
